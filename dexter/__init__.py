@@ -7,6 +7,7 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s')
 logging.debug('Dexter engine loaded!')
 
+
 '''
 pygame.init()
 screen = pygame.display.set_mode((500, 300))

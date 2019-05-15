@@ -2,24 +2,24 @@ import math
 
 
 class Vec2(object):
-    """docstring for Vec2."""
+    """2D Vector class with math + utility functions."""
 
     __slots__ = [
         "x", "y"
     ]
 
-    def __init__(self, x=0, y=0):
+    def __init__(self, x: float = 0, y: float = 0):
         super(Vec2, self).__init__()
         self.x = x
         self.y = y
-
-    def magnitude(self):
+    
+    def magnitude(self) -> float:
         return math.sqrt(self.x * self.x) + (self.y * self.y)
 
-    def magnitudeSqr(self):
+    def magnitudeSqr(self) -> float:
         return (self.x * self.x) + (self.y * self.y)
 
-    def getNormalized(self, arg):
+    def getNormalized(self, arg) -> 'Vec2':
         len = self.magnitude()
         if len != 0:
             return Vec2(
@@ -30,6 +30,14 @@ class Vec2(object):
 
     # Operators
 
+    def __eq__(self, other) -> bool:
+        if hasattr(other, "x") and hasattr(other, "y") and other.x == self.x and other.y == self.y:
+            return True
+        elif isinstance(other, tuple) and other[0] == self.x and other[1] == self.y:
+            return True
+        else:
+            return False
+    
     def __add__(self, rhs):
         return Vec2(
             self.x + rhs.x,
